@@ -7,6 +7,12 @@ var app = express();
 
 //route files to load
 var index = require('./routes/index');
+var latest = require('./routes/latest');
+var reviews = require('./routes/reviews');
+var community = require('./routes/community');
+var bdubs = require('./routes/bdubs');
+var bakedbear = require('./routes/bakedbear');
+var oscars = require('./routes/oscars');
 
 //database setup - uncomment to set up your database
 //var mongoose = require('mongoose');
@@ -21,6 +27,14 @@ app.use(express.bodyParser());
 
 //routes
 app.get('/', index.view);
+app.get('/latest', latest.view);
+app.get('/reviews', reviews.view);
+app.get('/community', community.view);
+app.get('/bdubs', bdubs.view);
+app.get('/bakedbear', bakedbear.view);
+app.get('/oscars', oscars.view);
+
+
 //set environment ports and start application
 app.set('port', process.env.PORT || 3000);
 http.createServer(app).listen(app.get('port'), function(){
